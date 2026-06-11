@@ -40,7 +40,7 @@ misc <- function() {
     overwrite = TRUE
   )
   stopifnot(file.exists(r_cmd_check_yaml_path))
-  suppressMessages(capture.output(rhub::rhub_setup()))
+  suppressMessages(capture.output(rhub::rhub_setup(overwrite = TRUE)))
   desc::desc_normalize()
   Sys.sleep(5)
   s2 <- system2("git", "status", stdout = TRUE)
