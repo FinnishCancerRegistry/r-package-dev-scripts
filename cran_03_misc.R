@@ -1,6 +1,6 @@
 du <- new.env()
 source(
-  "https://raw.githubusercontent.com/FinnishCancerRegistry/r-package-dev-scripts/refs/heads/main/check.R",
+  "https://raw.githubusercontent.com/FinnishCancerRegistry/r-package-dev-scripts/refs/heads/main/utils.R",
   local = du
 )
 
