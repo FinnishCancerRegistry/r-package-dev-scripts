@@ -8,7 +8,7 @@ source(
 devtools::spell_check()
 
 ## README / NEWS ---------------------------------------------------------------
-if (du$ask_yn("Is README.Rmd up-to-date?")) {
+if ("README.Rmd" %in% dir() && du$ask_yn("Is README.Rmd up-to-date?")) {
   du$git_commit_if_changes_made(
     rmarkdown::render("README.Rmd"),
     message = "docs: render README.Rmd"
