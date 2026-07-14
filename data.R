@@ -3,7 +3,7 @@ update_data <- function() {
   r_script_paths <- r_script_paths[
     !grepl("^[0-9]+_[0-9]+", r_script_paths)
   ]
-  
+
   s1 <- system2("git", "status", stdout = TRUE)
   stopifnot(
     "nothing to commit, working tree clean" %in% s1

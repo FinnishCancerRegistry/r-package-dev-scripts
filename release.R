@@ -4,7 +4,7 @@ release <- function() {
     fcrdev::pkg_local_release()
     return(NULL)
   }
-  
+
   requireNamespace("desc")
 
   ask_yes_no <- function(question) {
@@ -29,12 +29,17 @@ release <- function() {
   new_v <- desc::desc_get_version()
   tag_version <- paste0("v", new_v)
   system2("git", c("commit", paste0("-m \"build: ", tag_version, "\"")))
-    
+
   if (ask_yes_no("push commits? [y/n]")) {
     system2("git", "push")
   }
-  
-  if (ask_yes_no(sprintf("automatically add tags `%s` and `release` to local and remote repo? [y/n]", tag_version))) {
+
+  if (
+    ask_yes_no(sprintf(
+      "automatically add tags `%s` and `release` to local and remote repo? [y/n]",
+      tag_version
+    ))
+  ) {
     s2 <- system2("git", "status", stdout = TRUE)
     if (!identical(s1, s2)) {
       for (tag in c("release", tag_version)) {
