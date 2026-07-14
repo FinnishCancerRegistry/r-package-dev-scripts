@@ -16,5 +16,3 @@ message("Running revdepcheck::revdep_check(bioc = FALSE, num_workers = 4L)")
 du$gitignore_append("revdepcheck")
 tryCatch(revdepcheck::revdep_reset(), error = function(e) e)
 rdchk <- revdepcheck::revdep_check(bioc = FALSE, num_workers = 4L)
-
-message("See the generated reports. Press enter if everything looks OK.")
