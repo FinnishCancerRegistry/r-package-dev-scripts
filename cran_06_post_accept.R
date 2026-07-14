@@ -10,6 +10,10 @@ git_ref <- sub("SHA: ", "", lines[3])
 
 du$git_exe_cmd(c("pull", "--tags", "--force"))
 du$git_exe_cmd(c("checkout", git_ref))
+tryCatch(
+  du$git_exe_cmd(c("tag", "-d", sprintf("v%s", cran_version))),
+  error = function(e) e
+)
 du$git_exe_cmd(c("tag", sprintf("v%s", cran_version)))
 du$git_exe_cmd(c("checkout", "master"))
 tryCatch(
@@ -26,5 +30,4 @@ du$git_exe_cmd(c(
   "-m",
   sprintf("\"build: v%s\"", desc::desc_get_version())
 ))
-message("Bumped to development version ", desc::desc_get_version())
 du$git_exe_cmd("push")
