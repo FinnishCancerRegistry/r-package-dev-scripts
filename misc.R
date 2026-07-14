@@ -1,11 +1,4 @@
 misc <- function() {
-  r_script_path <- dir(
-    "dev",
-    pattern = "(licen[sc]e)|(misc)",
-    full.names = TRUE
-  )[1]
-  stopifnot(file.exists(r_script_path))
-  stopifnot(Sys.getenv("GITHUB_PAT") != "")
   requireNamespace("usethis")
   requireNamespace("data.table")
   requireNamespace("desc")
@@ -45,7 +38,7 @@ misc <- function() {
   Sys.sleep(5)
   s2 <- system2("git", "status", stdout = TRUE)
 
-  commit_message <- sprintf("\"build: run %s\"", r_script_path)
+  commit_message <- "\"build: run r-package-dev-scripts/misc.R from github"
   if (!identical(s1, s2)) {
     system2("git", c("add", "--all"))
     system2("git", c("commit", "-m", commit_message))
