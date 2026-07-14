@@ -1,7 +1,13 @@
+source(
+  "https://raw.githubusercontent.com/FinnishCancerRegistry/r-package-dev-scripts/refs/heads/main/misc.R",
+  encoding = "UTF-8"
+)
+
 du <- new.env()
 source(
   "https://raw.githubusercontent.com/FinnishCancerRegistry/r-package-dev-scripts/refs/heads/main/utils.R",
-  local = du
+  local = du,
+  encoding = "UTF-8"
 )
 
 ## spelling --------------------------------------------------------------------
