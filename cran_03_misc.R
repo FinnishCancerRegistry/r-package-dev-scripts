@@ -11,7 +11,13 @@ source(
 )
 
 ## spelling --------------------------------------------------------------------
+message("Running devtools::spell_check()")
 devtools::spell_check()
+message(
+  "Press enter when you have fixed + committed any and all",
+  "devtools::spell_check() problems reported above"
+)
+readline(": ")
 
 ## README / NEWS ---------------------------------------------------------------
 if ("README.Rmd" %in% dir() && du$ask_yn("Is README.Rmd up-to-date?")) {
@@ -20,12 +26,10 @@ if ("README.Rmd" %in% dir() && du$ask_yn("Is README.Rmd up-to-date?")) {
     message = "docs: render README.Rmd"
   )
 }
-if (!du$ask_yn("Do you have a news item in NEWS.md for the release?")) {
-  stop("fix NEWS.md")
-}
-if (!du$ask_yn("Have you updated cran-comments.md?")) {
-  stop("fix cran-comments.md")
-}
-if (!du$ask_yn("Have you bumped the package version?")) {
-  stop("Bump package version (with e.g. desc::desc_bump_version or manually)")
-}
+
+message("Press enter when/if NEWS.md is up-to-date")
+readline(": ")
+message("Press enter when/if cran-comments.md is up-to-date")
+readline(": ")
+message("Press enter when/if the version in DESCRIPTION is the release version")
+readline(": ")
