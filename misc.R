@@ -38,10 +38,10 @@ misc <- function() {
   Sys.sleep(5)
   s2 <- system2("git", "status", stdout = TRUE)
 
-  commit_message <- "\"build: run r-package-dev-scripts/misc.R from github"
+  commit_message <- "\"build: run misc.R"
   if (!identical(s1, s2)) {
     system2("git", c("add", "--all"))
-    system2("git", c("commit", "-m", commit_message))
+    system2("git", c("commit", "-m", commit_message, "-m", "see https://github.com/FinnishCancerRegistry/r-package-dev-scripts/"))
   }
 }
 misc()
